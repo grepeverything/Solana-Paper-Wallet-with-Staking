@@ -90,7 +90,9 @@ solana airdrop 1.5 hot-wallet.json
 ```
 
 *Live Run*:
-Send SOL (amount to stake + 0.05 SOL for fees) from an existing wallet or exchange to the hot wallet's public key. Display the public key:
+Send SOL (amount to stake + 0.05 SOL for fees) from an existing wallet or exchange to the hot wallet's public key. 
+
+Display the public key:
 
 ```bash
 solana-keygen pubkey hot-wallet.json
