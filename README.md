@@ -524,5 +524,5 @@ This guide covers creating a secure Solana paper wallet with staking using offli
 Consider a small SOL donation to the author:  
 An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 
-![QR Code](https://github.com/user-attachments/assets/db84f717-0d89-4dae-97a3-d1b769e58ce5)
+![QR Code]
 
