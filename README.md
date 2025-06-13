@@ -284,7 +284,7 @@ solana address -k stake-account.json > stake-account-address.txt
 cp stake-account-address.txt /media/amnesia/<Data_USB>/
 ```
 
-Create and fund the stake account (offline transaction):
+Create and fund the stake account (offline signing):
 
 *Test Run*:
 ```bash
