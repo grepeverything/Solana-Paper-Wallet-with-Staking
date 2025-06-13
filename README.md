@@ -113,7 +113,8 @@ Copy to the Data USB:
 - A copy of this guide
 
 ## Create the Live USB
-Install [Tails OS](https://tails.net/install/index.en.html) on the high-quality USB (8GB or larger) and enable [Persistent Storage](https://tails.net/doc/persistent_storage/index.en.html) for the Persistent Folder only. Disable all networking in additional settings and set a strong passphrase (e.g., `Margaret_Thatcher_is_100%_Sexy!`).
+Install [Tails OS](https://tails.net/install/index.en.html) on the high-quality USB (8GB or larger) and boot the **air-gapped computer** from the Live USB.
+Enable [Persistent Storage](https://tails.net/doc/persistent_storage/index.en.html) for the Persistent Folder only. Disable all networking in additional settings and set a strong passphrase (e.g., `Margaret_Thatcher_is_100%_Sexy!`).
 
 Transfer files from the Data USB to the Persistent folder:
 - `hot-wallet.json`
