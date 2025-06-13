@@ -521,8 +521,8 @@ solana stake-account $(cat stake-account-address.txt)
 ## Conclusion
 This guide covers creating a secure Solana paper wallet with staking using offline signing. Try transferring the cold wallet balance back to the hot wallet as an exercise.
 
-Consider a small SOL donation to the author:  
-An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
+Consider a small SOL donation to the author:
 
+An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 ![QR Code](https://github.com/grepeverything/Solana-Paper-Wallet-with-Staking/blob/main/SOL_Donation_QR_Code.png)
 
