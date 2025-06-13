@@ -129,12 +129,7 @@ export PATH=$PWD/bin:$PATH
 cd ..
 ```
 
-Add to `.bashrc` for persistence (optional, as Persistent dotfiles are not enabled):
-
-```bash
-# set PATH environment variable to include the Solana CLI tools
-export PATH=$PATH:~/Persistent/solana-release/bin
-```
+Persistent dotfiles are not enabled, so the PATH will need to be added each time Tails is rebooted
 
 Verify:
 
