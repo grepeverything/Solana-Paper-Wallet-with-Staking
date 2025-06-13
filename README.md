@@ -32,6 +32,7 @@ Unpack the Solana CLI and add it to the PATH:
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
 cd solana-release/
 export PATH=$PWD/bin:$PATH
+cd ..
 ```
 
 To persist across terminal sessions, add to `.bashrc`:
