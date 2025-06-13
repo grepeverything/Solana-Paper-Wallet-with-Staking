@@ -110,7 +110,7 @@ solana balance hot-wallet.json
 Copy to the Data USB:
 - `hot-wallet.json`
 - `solana-release-x86_64-unknown-linux-gnu.tar.bz2`
-- A copy of this guide
+- A copy of this guide (download the raw file for offline viewing)
 
 ## Create the Live USB
 Install [Tails OS](https://tails.net/install/index.en.html) on the high-quality USB (8GB or larger) and boot the **air-gapped computer** from the Live USB.
