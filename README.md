@@ -75,7 +75,7 @@ Clear the terminal:
 clear
 ```
 
-Set up the Solana CLI for **devnet** (test run) or **mainnet-beta** (live run):
+Set up the Solana CLI for **devnet** (test run) or **mainnet-beta** (live run), and assign hot-wallet.json as the default keypair.:
 
 *Test Run*:
 ```bash
