@@ -521,7 +521,9 @@ solana stake-account $(cat stake-account-address.txt)
 4. Use derivation path `m/44'/501'/0'/0'` to match `cold-wallet-address.txt`.
 
 ## Conclusion
-This guide covers creating a secure Solana paper wallet with staking using offline signing. Try transferring the cold wallet balance back to the hot wallet as an exercise.
+This guide covers creating a secure Solana paper wallet with staking using offline signing. 
+
+Try constructing the transactions to transfer the cold wallet balance back to the hot wallet as an exercise.
 
 Consider a small SOL donation to the author:
 
