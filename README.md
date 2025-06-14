@@ -229,7 +229,7 @@ solana balance $(cat cold-wallet-address.txt)
 ## Create a Nonce Account
 A nonce account is required for offline signing. Learn more [here](https://solana.com/developers/guides/advanced/introduction-to-durable-nonces).
 
-Generate the nonce account keypair:
+On the **networked computer**, generate the nonce account keypair:
 
 ```bash
 solana-keygen new --no-bip39-passphrase -s -o nonce-account.json
