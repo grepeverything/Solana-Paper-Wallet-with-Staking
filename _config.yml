@@ -3,3 +3,4 @@ description: A guide for creating an air-gapped Solana paper wallet with staking
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
