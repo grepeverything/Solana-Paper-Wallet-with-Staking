@@ -418,7 +418,8 @@ solana nonce nonce-account.json > nonce.txt
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
-On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt`. Create the offline transaction:
+On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt` to the Persistent directory. 
+Create the offline transaction:
 
 ```bash
 solana deactivate-stake \
