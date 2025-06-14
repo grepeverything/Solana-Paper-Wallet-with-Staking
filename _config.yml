@@ -1,0 +1,5 @@
+title: Solana Paper Wallet with Staking
+description: A guide for creating an air-gapped Solana paper wallet with staking capabilities
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-seo-tag
