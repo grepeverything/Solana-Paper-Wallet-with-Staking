@@ -14,7 +14,8 @@ For more details, see the [Solana CLI documentation](https://docs.anza.xyz/cli/i
 - Understanding of operational security (OpSec)
 - A strong desire to keep your Solana safe
 
-**WARNING**: This process is technical and requires learning about Solana transactions. For a simpler alternative, consider a hardware wallet for cold storage with staking.  
+**WARNING**: This process is technical and requires learning about Solana transactions. For a simpler alternative, consider a hardware wallet for cold storage with staking.
+
 Practice on **devnet** (using air-dropped test SOL) before attempting on **mainnet-beta** with real SOL.
 
 ## Download and Install the Solana CLI
