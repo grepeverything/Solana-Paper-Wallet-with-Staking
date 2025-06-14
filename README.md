@@ -60,7 +60,10 @@ The hot wallet resides on the networked computer and should not store large amou
 Generate the hot wallet keypair:
 
 ```bash
-solana-keygen new --no-bip39-passphrase -o hot-wallet.json
+solana-keygen new \
+--derivation-path \
+--no-bip39-passphrase \
+-o hot-wallet.json
 ```
 
 **Write down the 12-word seed phrase** and store it securely. The `.json` file contains the private key—guard it carefully.
