@@ -359,7 +359,7 @@ Select a validator vote account:
 solana validators
 ```
 
-Choose a validator near the bottom of the list and save to `validator.txt`:
+Choose a validator near the bottom of the list and save the vote account address to `validator.txt`:
 
 ```bash
 echo <vote_account_address> > validator.txt
