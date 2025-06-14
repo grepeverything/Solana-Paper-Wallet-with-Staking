@@ -194,7 +194,7 @@ solana-keygen verify $(cat cold-wallet-address.txt) 'prompt://?key=0/0'
 ```
 
 ## Fund the Cold Wallet
-On the **networked computer**, ensure the correct network and keypair:
+On the **networked computer**, ensure the correct URL and keypair are set:
 
 ```bash
 solana config get
