@@ -31,7 +31,7 @@ On the **networked computer**, download the latest stable release (v2.2.16 at th
 Execute commands from the home directory (`~/`).
 
 ```bash
-wget https://github.com/anza-xyz/agave/releases/download/v2.2.15/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+wget https://github.com/anza-xyz/agave/releases/download/v2.2.16/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 ```
 
 Unpack the Solana CLI and add it to the PATH:
