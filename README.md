@@ -218,7 +218,7 @@ $(cat cold-wallet-address.txt) 1.1
 ```
 
 *Live Run*:
-Update the <AMOUNT> to include staking amount + 0.05 SOL for fees.
+Update the `<AMOUNT>` to include staking amount + 0.05 SOL for fees.
 
 Check the cold wallet balance:
 
