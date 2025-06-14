@@ -491,7 +491,7 @@ cold-wallet.json $(cat balance.txt)
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` and submit:
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` and submit:
 
 ```bash
 solana withdraw-stake \
