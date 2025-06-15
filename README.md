@@ -529,5 +529,4 @@ Consider a small SOL donation to the author:
 
 An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 
-![QR Code](https://github.com/grepeverything/Solana-Paper-Wallet-with-Staking/blob/main/SOL_Donation_QR_Code.png)
-
+![QR Code](https://raw.githubusercontent.com/grepeverything/Solana-Paper-Wallet-with-Staking/main/SOL_Donation_QR_Code.png)
