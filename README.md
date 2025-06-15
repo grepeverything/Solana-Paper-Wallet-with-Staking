@@ -516,9 +516,13 @@ solana stake-account $(cat stake-account-address.txt)
 ## Software Wallets
 
 A view-only wallet can be created using the [Backpack](https://backpack.app/) app.
+
 If viewing a devnet wallet, switch the RPC Connection to use `https://api.devnet.solana.com` in settings.
+
 If viewing a mainnet wallet, leave the RPC Connection as the default.
+
 A software wallet can also be used to recover the paper wallet from the seed phrase.
+
 **Warning**: Recovering in a software wallet makes it a hot wallet.
 
 
