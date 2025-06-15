@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Solana Paper Wallet with Staking
-description: A guide for creating an air-gapped Solana paper wallets with staking support
+description: A guide for creating an air-gapped Solana paper wallet with staking support
 google-site-verification: DMBFlxWnLAuyxAWcP0A3aSyRHCAj3AB2u7wghYOIHJ4
 keywords: Solana, paper wallet, cryptocurrency, staking, blockchain, tutorial, guide, air-gapped, nonce, nonce-account, stake-account, cold wallet, offline signing, OpSec,linux, solana-cli, keypair, private keys, public keys,.json, hot wallet, solflare
 ---
