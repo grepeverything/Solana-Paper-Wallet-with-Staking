@@ -513,12 +513,14 @@ solana balance $(cat cold-wallet-address.txt)
 solana stake-account $(cat stake-account-address.txt)
 ```
 
-## Recover the Cold Wallet
-**Warning**: Recovering in a software wallet makes it a hot wallet. Use [Solflare](https://www.solflare.com/):
-1. Disable networking while entering the seed phrase and wallet password.
-2. Select "I already have a wallet" and choose the 24-word recovery phrase option.
-3. For devnet, switch to Devnet in settings if no balance is shown.
-4. Use derivation path `m/44'/501'/0'/0'` to match `cold-wallet-address.txt`.
+## Software Wallets
+
+A view-only wallet can be created using the [Backpack](https://backpack.app/) app.
+If viewing a devnet wallet, switch the RPC Connection to use `https://api.devnet.solana.com` in settings.
+If viewing a mainnet wallet, leave the RPC Connection as the default.
+A software wallet can also be used to recover the paper wallet from the seed phrase.
+**Warning**: Recovering in a software wallet makes it a hot wallet.
+
 
 ## Conclusion
 This guide covers creating a secure Solana paper wallet with staking using offline signing. 
