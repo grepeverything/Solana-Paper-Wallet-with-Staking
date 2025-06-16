@@ -552,7 +552,7 @@ A software wallet can also be used to recover the paper wallet from the seed phr
 ## Conclusion
 This guide covers creating a secure Solana paper wallet with staking using offline signing. 
 
-Try constructing the transactions to transfer the cold wallet balance back to the hot wallet as an exercise.
+Test the knowledge learned by constructing a transaction to transfer the cold wallet balance back to the hot wallet.
 
 Consider a small SOL donation to the author:
 
