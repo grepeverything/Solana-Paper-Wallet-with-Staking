@@ -256,7 +256,7 @@ Display nonce account details:
 solana nonce-account nonce-account.json
 ```
 
-The nonce-account.json file or the nonce account address will be required to recover the rent. Keep them safe.
+The nonce-account.json file or the nonce account address will be required to recover the rent. Store them somewhere safe.
 
 ## Create the Stake Account
 On the **air-gapped computer**, set up the Solana CLI:
@@ -291,6 +291,8 @@ solana-keygen new --no-passphrase --derivation-path -s -o stake-account.json
 solana address -k stake-account.json > stake-account-address.txt
 cp stake-account-address.txt /media/amnesia/<Data_USB>/
 ```
+
+The stake-account.json file or the stake account address will be required to deactivate and withdraw the stake. Store them somewhere safe.
 
 Create and fund the stake account (offline signing):
 
