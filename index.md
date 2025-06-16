@@ -58,7 +58,7 @@ solana --version
 
 Expected output:
 
-```
+```bash
 solana-cli 2.2.16 (src:851b7526; feat:3073396398, client:Agave)
 ```
 
@@ -263,6 +263,8 @@ Display nonce account details:
 solana nonce-account nonce-account.json
 ```
 
+The nonce-account.json file or the nonce account address will be required to recover the rent. Store them somewhere safe.
+
 ## Create the Stake Account
 On the **air-gapped computer**, set up the Solana CLI:
 
@@ -296,6 +298,8 @@ solana-keygen new --no-passphrase --derivation-path -s -o stake-account.json
 solana address -k stake-account.json > stake-account-address.txt
 cp stake-account-address.txt /media/amnesia/<Data_USB>/
 ```
+
+The stake-account.json file or the stake account address will be required to deactivate and withdraw the stake. Store them somewhere safe.
 
 Create and fund the stake account (offline signing):
 
@@ -520,6 +524,18 @@ solana balance $(cat cold-wallet-address.txt)
 solana stake-account $(cat stake-account-address.txt)
 ```
 
+## Withdraw from Nonce Account
+
+The nonce account can remain active for future transactions or the rent amount can be recovered.
+
+Recover rent amount to the hot wallet (nonce-authority):
+
+```bash
+solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
+```
+
+The hot wallet will need enough balance to cover the transaction fee.
+
 ## Software Wallets
 
 A view-only wallet can be created using the [Backpack](https://backpack.app/) app.
@@ -532,6 +548,7 @@ A software wallet can also be used to recover the paper wallet from the seed phr
 
 **Warning**: Recovering in a software wallet makes it a hot wallet.
 
+
 ## Conclusion
 This guide covers creating a secure Solana paper wallet with staking using offline signing. 
 
@@ -542,3 +559,4 @@ Consider a small SOL donation to the author:
 An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 
 ![QR Code](https://raw.githubusercontent.com/grepeverything/Solana-Paper-Wallet-with-Staking/main/SOL_Donation_QR_Code.png)
+
