@@ -366,10 +366,10 @@ echo <signing_pair_3> > /media/amnesia/<Data_USB>/signer3.txt
 On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/` or preferred working directory.
 
 ```bash
-cp /media/<USER>/<Data_Usb>/stake-account-address.txt ~
+cp /media/<USER>/<Data_USB>/stake-account-address.txt ~
 ```
 ```bash
-cp /media/<USER>/<Data_Usb>/signer* ~
+cp /media/<USER>/<Data_USB>/signer* ~
 ```
 
 Submit the transaction:
