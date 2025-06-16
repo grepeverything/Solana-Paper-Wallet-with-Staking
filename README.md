@@ -31,8 +31,14 @@ Unpack the Solana CLI and add it to the PATH:
 
 ```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
+```
+```bash
 cd solana-release/
+```
+```bash
 export PATH=$PWD/bin:$PATH
+```
+```bash
 cd ..
 ```
 
@@ -101,7 +107,9 @@ Display the public key:
 
 ```bash
 solana-keygen pubkey hot-wallet.json
-# or
+```
+or
+```bash
 solana address -k hot-wallet.json
 ```
 
@@ -129,9 +137,17 @@ Unpack the Solana CLI in the Persistent directory:
 
 ```bash
 cd Persistent
+```
+```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
+```
+```bash
 cd solana-release/
+```
+```bash
 export PATH=$PWD/bin:$PATH
+```
+```bash
 cd ..
 ```
 
@@ -172,6 +188,8 @@ Save the public key to `cold-wallet-address.txt` and copy to the Data USB:
 
 ```bash
 solana address -k cold-wallet.json > cold-wallet-address.txt
+```
+```bash
 cp cold-wallet-address.txt /media/amnesia/<Data_USB>/
 ```
 
@@ -245,8 +263,14 @@ Save the public key and nonce value:
 
 ```bash
 solana address -k nonce-account.json > nonce-account-address.txt
+```
+```bash
 cp nonce-account-address.txt /media/<USER>/<Data_USB>/
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -263,7 +287,11 @@ On the **air-gapped computer**, set up the Solana CLI:
 
 ```bash
 cd Persistent/solana-release/
+```
+```bash
 export PATH=$PWD/bin:$PATH
+```
+```bash
 cd ..
 ```
 
@@ -281,6 +309,8 @@ Copy files from the Data USB:
 
 ```bash
 cp /media/amnesia/<Data_USB>/nonce-account-address.txt ~/Persistent/
+```
+```bash
 cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
 ```
 
@@ -288,7 +318,11 @@ Generate a stake account keypair:
 
 ```bash
 solana-keygen new --no-passphrase --derivation-path -s -o stake-account.json
+```
+```bash
 solana address -k stake-account.json > stake-account-address.txt
+```
+```bash
 cp stake-account-address.txt /media/amnesia/<Data_USB>/
 ```
 
@@ -314,7 +348,11 @@ Save signing pairs to the Data USB (replace `<signing_pair_X>` with actual value
 
 ```bash
 echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
 echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+```bash
 echo <signing_pair_3> > /media/amnesia/<Data_USB>/signer3.txt
 ```
 
@@ -352,7 +390,11 @@ Advance the nonce on the **networked computer**:
 
 ```bash
 solana new-nonce nonce-account.json
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -367,6 +409,8 @@ Choose a validator near the bottom of the list and save the vote account address
 
 ```bash
 echo <vote_account_address> > validator.txt
+```
+```bash
 cp validator.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -418,7 +462,11 @@ On the **networked computer**, advance the nonce:
 
 ```bash
 solana new-nonce nonce-account.json
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -468,6 +516,8 @@ Save the balance (numerical value only) to `balance.txt`:
 
 ```bash
 echo <balance> > balance.txt
+```
+```bash
 cp balance.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -475,7 +525,11 @@ Advance the nonce:
 
 ```bash
 solana new-nonce nonce-account.json
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -514,6 +568,8 @@ Check balances:
 
 ```bash
 solana balance $(cat cold-wallet-address.txt)
+```
+```bash
 solana stake-account $(cat stake-account-address.txt)
 ```
 
