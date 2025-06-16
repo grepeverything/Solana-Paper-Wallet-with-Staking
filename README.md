@@ -224,7 +224,7 @@ Copy `cold-wallet-address.txt` from the Data USB to `~/`or preferred working dir
 cp /media/<USER>/<Data_USB>/cold-wallet-address.txt ~
 ```
 
-Transfer SOL from the hot wallet to the cold wallet:
+Transfer SOL from the hot wallet to the cold wallet (leave some SOL in the hot wallet as it will be the fee payer for most of the transactions. 0.05 should be fine):
 
 *Test Run*:
 ```bash
@@ -232,7 +232,7 @@ solana transfer \
 --allow-unfunded-recipient \
 --from hot-wallet.json \
 --fee-payer hot-wallet.json \
-$(cat cold-wallet-address.txt) 1.1
+$(cat cold-wallet-address.txt) 1.05
 ```
 
 *Live Run*:
