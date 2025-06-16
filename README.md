@@ -128,10 +128,18 @@ Transfer files from the Data USB to the Persistent folder:
 Unpack the Solana CLI in the Persistent directory:
 
 ```bash
-cd Persistent
+cd Persistentbash
+```
+```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
+```
+```bash
 cd solana-release/
+```
+```bash
 export PATH=$PWD/bin:$PATH
+```
+```bash
 cd ..
 ```
 
