@@ -305,7 +305,7 @@ solana config set -u devnet -k cold-wallet.json
 solana config set -u mainnet-beta -k cold-wallet.json
 ```
 
-Copy files from the Data USB:
+Copy `nonce-account-address.txt` and `nonce.txt` from the Data USB to the Persistent directory:
 
 ```bash
 cp /media/amnesia/<Data_USB>/nonce-account-address.txt ~/Persistent/
@@ -314,7 +314,7 @@ cp /media/amnesia/<Data_USB>/nonce-account-address.txt ~/Persistent/
 cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
 ```
 
-Generate a stake account keypair:
+Generate the stake account keypair and copy the address to the Data USB:
 
 ```bash
 solana-keygen new --no-passphrase --derivation-path -s -o stake-account.json
@@ -357,6 +357,13 @@ echo <signing_pair_3> > /media/amnesia/<Data_USB>/signer3.txt
 ```
 
 On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_Usb>/stake-account-address.txt ~
+```
+```bash
+cp /media/<USER>/<Data_Usb>/signer* ~
+```
 
 Submit the transaction:
 
@@ -441,6 +448,16 @@ solana config set -u mainnet-beta -k cold-wallet.json
 
 Copy `nonce.txt` and `validator.txt` to the Persistent directory. Delete old `signer*.txt` files from the Data USB.
 
+```bash
+cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
+```
+```bash
+cp /media/amnesia/<Data_USB>/validator.txt ~/Persistent/
+```
+```bash
+rm /media/amnesia/<Data_USB>/signer*
+```
+
 Delegate the stake:
 
 ```bash
@@ -456,7 +473,20 @@ $(cat validator.txt)
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory and submit:
+```bash
+echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
+echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_USB>/signer* ~
+```
+
+Submit the transaction:
 
 ```bash
 solana delegate-stake \
@@ -512,28 +542,13 @@ solana config set -u devnet -k cold-wallet.json
 *Live Run*:
 ```bash
 solana config set -u mainnet-beta -k cold-wallet.json
-``````bash
-cd Persistent/solana-release/
-```
-```bash
-export PATH=$PWD/bin:$PATH
-```
-```bash
-cd ..
 ```
 
-*Test Run*:
-```bash
-solana config set -u devnet -k cold-wallet.json
-```
-
-*Live Run*:
-```bash
-solana config set -u mainnet-beta -k cold-wallet.json
-```
 Copy `nonce.txt` to the Persistent directory.
 
 ```bash
+cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
+```
 
 Create the offline transaction:
 
@@ -549,7 +564,20 @@ stake-account.json
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory and submit:
+```bash
+echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
+echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_USB>/signer* ~
+```
+
+Submit the transaction:
 
 ```bash
 solana deactivate-stake \
@@ -621,6 +649,13 @@ solana config set -u mainnet-beta -k cold-wallet.json
 
 Copy `nonce.txt` and `balance.txt`to the Persistent directory.
 
+```bash
+cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
+```
+```bash
+cp /media/amnesia/<Data_USB>/balance.txt ~/Persistent/
+```
+
 Create the offline transaction:
 
 ```bash
@@ -636,7 +671,20 @@ cold-wallet.json $(cat balance.txt)
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory and submit:
+```bash
+echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
+echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_USB>/signer* ~
+```
+
+Submit the transaction:
 
 ```bash
 solana withdraw-stake \
