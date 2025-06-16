@@ -417,7 +417,29 @@ cp validator.txt /media/<USER>/<Data_USB>/
 *Live Run*:
 Research validators using [Solana Beach](https://solanabeach.io/), [Validators.app](https://www.validators.app/validators), or [Stakewiz](https://stakewiz.com/). Example validator: `oRAnGeU5h8h2UkvbfnE5cjXnnAa4rBoaxmS4kbFymSe`.
 
-On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt` and `validator.txt` to the Persistent directory. Delete old `signer*.txt` files from the Data USB.
+On the **air-gapped computer**, set up the Solana CLI:
+
+```bash
+cd Persistent/solana-release/
+```
+```bash
+export PATH=$PWD/bin:$PATH
+```
+```bash
+cd ..
+```
+
+*Test Run*:
+```bash
+solana config set -u devnet -k cold-wallet.json
+```
+
+*Live Run*:
+```bash
+solana config set -u mainnet-beta -k cold-wallet.json
+```
+
+Copy `nonce.txt` and `validator.txt` to the Persistent directory. Delete old `signer*.txt` files from the Data USB.
 
 Delegate the stake:
 
@@ -470,7 +492,49 @@ solana nonce nonce-account.json > nonce.txt
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
-On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt` to the Persistent directory. 
+On the **air-gapped computer**, set up the Solana CLI:
+
+```bash
+cd Persistent/solana-release/
+```
+```bash
+export PATH=$PWD/bin:$PATH
+```
+```bash
+cd ..
+```
+
+*Test Run*:
+```bash
+solana config set -u devnet -k cold-wallet.json
+```
+
+*Live Run*:
+```bash
+solana config set -u mainnet-beta -k cold-wallet.json
+``````bash
+cd Persistent/solana-release/
+```
+```bash
+export PATH=$PWD/bin:$PATH
+```
+```bash
+cd ..
+```
+
+*Test Run*:
+```bash
+solana config set -u devnet -k cold-wallet.json
+```
+
+*Live Run*:
+```bash
+solana config set -u mainnet-beta -k cold-wallet.json
+```
+Copy `nonce.txt` to the Persistent directory.
+
+```bash
+
 Create the offline transaction:
 
 ```bash
@@ -533,7 +597,30 @@ solana nonce nonce-account.json > nonce.txt
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
-On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt` and `balance.txt`to the Persistent directory.
+On the **air-gapped computer**, set up the Solana CLI:
+
+```bash
+cd Persistent/solana-release/
+```
+```bash
+export PATH=$PWD/bin:$PATH
+```
+```bash
+cd ..
+```
+
+*Test Run*:
+```bash
+solana config set -u devnet -k cold-wallet.json
+```
+
+*Live Run*:
+```bash
+solana config set -u mainnet-beta -k cold-wallet.json
+```
+
+Copy `nonce.txt` and `balance.txt`to the Persistent directory.
+
 Create the offline transaction:
 
 ```bash
@@ -572,6 +659,7 @@ solana balance $(cat cold-wallet-address.txt)
 ```bash
 solana stake-account $(cat stake-account-address.txt)
 ```
+The error indicates the stake account is deactivated and unfunded.
 
 ## Withdraw from Nonce Account
 
@@ -585,6 +673,18 @@ solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
 ```
 
 The hot wallet will need enough balance to cover the transaction fee.
+
+Check account balances:
+
+```bash
+solana balance nonce-account.json
+```
+```bash
+solana balance hot-wallet.json
+```
+```bash
+solana balance $(cat cold-wallet-address.txt)
+```
 
 ## Software Wallets
 
