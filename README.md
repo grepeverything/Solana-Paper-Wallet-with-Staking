@@ -51,8 +51,9 @@ solana --version
 
 Expected output:
 
+```bash
+solana-cli 2.2.16 (src:851b7526; feat:3073396398, client:Agave)
 ```
-solana-cli 2.2.16 (src:851b7526; feat:3073396398, client:Agave)```
 
 ## Create the Hot Wallet
 The hot wallet resides on the networked computer and should not store large amounts of SOL. Ensure a secure environment (no cameras, private screen) and have paper and a pen ready to record the 12-word seed phrase.
