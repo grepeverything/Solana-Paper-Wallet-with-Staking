@@ -146,7 +146,7 @@ solana --version
 Expected output:
 
 ```
-solana-cli 2.2.15 (src:7aff93a2; feat:798020478, client:Agave)
+solana-cli 2.2.16 (src:851b7526; feat:3073396398, client:Agave)
 ```
 
 ## Create the Cold Wallet
