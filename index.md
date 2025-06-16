@@ -28,7 +28,7 @@ Practice on **devnet** (using air-dropped test SOL) before attempting on **mainn
 ## Download and Install the Solana CLI
 On the **networked computer**, download the latest stable release (v2.2.16 at the time of writing) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
 
-Execute commands from the home directory (`~/`).
+Execute commands from the home directory (`~/`) or preferred working directory.
 
 ```bash
 wget https://github.com/anza-xyz/agave/releases/download/v2.2.16/solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -38,8 +38,14 @@ Unpack the Solana CLI and add it to the PATH:
 
 ```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
+```
+```bash
 cd solana-release/
+```
+```bash
 export PATH=$PWD/bin:$PATH
+```
+```bash
 cd ..
 ```
 
@@ -108,7 +114,9 @@ Display the public key:
 
 ```bash
 solana-keygen pubkey hot-wallet.json
-# or
+```
+or
+```bash
 solana address -k hot-wallet.json
 ```
 
@@ -136,9 +144,17 @@ Unpack the Solana CLI in the Persistent directory:
 
 ```bash
 cd Persistent
+```
+```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
+```
+```bash
 cd solana-release/
+```
+```bash
 export PATH=$PWD/bin:$PATH
+```
+```bash
 cd ..
 ```
 
@@ -179,6 +195,8 @@ Save the public key to `cold-wallet-address.txt` and copy to the Data USB:
 
 ```bash
 solana address -k cold-wallet.json > cold-wallet-address.txt
+```
+```bash
 cp cold-wallet-address.txt /media/amnesia/<Data_USB>/
 ```
 
@@ -207,13 +225,13 @@ On the **networked computer**, ensure the correct URL and keypair are set:
 solana config get
 ```
 
-Copy `cold-wallet-address.txt` from the Data USB to `~/`:
+Copy `cold-wallet-address.txt` from the Data USB to `~/`or preferred working directory:
 
 ```bash
 cp /media/<USER>/<Data_USB>/cold-wallet-address.txt ~
 ```
 
-Transfer SOL from the hot wallet to the cold wallet:
+Transfer SOL from the hot wallet to the cold wallet (leave some SOL in the hot wallet as it will be the fee payer for most of the transactions. 0.05 should be fine):
 
 *Test Run*:
 ```bash
@@ -221,7 +239,7 @@ solana transfer \
 --allow-unfunded-recipient \
 --from hot-wallet.json \
 --fee-payer hot-wallet.json \
-$(cat cold-wallet-address.txt) 1.1
+$(cat cold-wallet-address.txt) 1.05
 ```
 
 *Live Run*:
@@ -252,8 +270,14 @@ Save the public key and nonce value:
 
 ```bash
 solana address -k nonce-account.json > nonce-account-address.txt
+```
+```bash
 cp nonce-account-address.txt /media/<USER>/<Data_USB>/
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -270,7 +294,11 @@ On the **air-gapped computer**, set up the Solana CLI:
 
 ```bash
 cd Persistent/solana-release/
+```
+```bash
 export PATH=$PWD/bin:$PATH
+```
+```bash
 cd ..
 ```
 
@@ -284,18 +312,24 @@ solana config set -u devnet -k cold-wallet.json
 solana config set -u mainnet-beta -k cold-wallet.json
 ```
 
-Copy files from the Data USB:
+Copy `nonce-account-address.txt` and `nonce.txt` from the Data USB to the Persistent directory:
 
 ```bash
 cp /media/amnesia/<Data_USB>/nonce-account-address.txt ~/Persistent/
+```
+```bash
 cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
 ```
 
-Generate a stake account keypair:
+Generate the stake account keypair and copy the address to the Data USB:
 
 ```bash
 solana-keygen new --no-passphrase --derivation-path -s -o stake-account.json
+```
+```bash
 solana address -k stake-account.json > stake-account-address.txt
+```
+```bash
 cp stake-account-address.txt /media/amnesia/<Data_USB>/
 ```
 
@@ -321,11 +355,22 @@ Save signing pairs to the Data USB (replace `<signing_pair_X>` with actual value
 
 ```bash
 echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
 echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+```bash
 echo <signing_pair_3> > /media/amnesia/<Data_USB>/signer3.txt
 ```
 
-On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/`.
+On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_Usb>/stake-account-address.txt ~
+```
+```bash
+cp /media/<USER>/<Data_Usb>/signer* ~
+```
 
 Submit the transaction:
 
@@ -359,7 +404,11 @@ Advance the nonce on the **networked computer**:
 
 ```bash
 solana new-nonce nonce-account.json
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -374,13 +423,47 @@ Choose a validator near the bottom of the list and save the vote account address
 
 ```bash
 echo <vote_account_address> > validator.txt
+```
+```bash
 cp validator.txt /media/<USER>/<Data_USB>/
 ```
 
 *Live Run*:
 Research validators using [Solana Beach](https://solanabeach.io/), [Validators.app](https://www.validators.app/validators), or [Stakewiz](https://stakewiz.com/). Example validator: `oRAnGeU5h8h2UkvbfnE5cjXnnAa4rBoaxmS4kbFymSe`.
 
-On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt` and `validator.txt` to the Persistent directory. Delete old `signer*.txt` files from the Data USB.
+On the **air-gapped computer**, set up the Solana CLI:
+
+```bash
+cd Persistent/solana-release/
+```
+```bash
+export PATH=$PWD/bin:$PATH
+```
+```bash
+cd ..
+```
+
+*Test Run*:
+```bash
+solana config set -u devnet -k cold-wallet.json
+```
+
+*Live Run*:
+```bash
+solana config set -u mainnet-beta -k cold-wallet.json
+```
+
+Copy `nonce.txt` and `validator.txt` to the Persistent directory. Delete old `signer*.txt` files from the Data USB.
+
+```bash
+cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
+```
+```bash
+cp /media/amnesia/<Data_USB>/validator.txt ~/Persistent/
+```
+```bash
+rm /media/amnesia/<Data_USB>/signer*
+```
 
 Delegate the stake:
 
@@ -397,7 +480,20 @@ $(cat validator.txt)
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` and submit:
+```bash
+echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
+echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_USB>/signer* ~
+```
+
+Submit the transaction:
 
 ```bash
 solana delegate-stake \
@@ -425,11 +521,42 @@ On the **networked computer**, advance the nonce:
 
 ```bash
 solana new-nonce nonce-account.json
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
-On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt` to the Persistent directory. 
+On the **air-gapped computer**, set up the Solana CLI:
+
+```bash
+cd Persistent/solana-release/
+```
+```bash
+export PATH=$PWD/bin:$PATH
+```
+```bash
+cd ..
+```
+
+*Test Run*:
+```bash
+solana config set -u devnet -k cold-wallet.json
+```
+
+*Live Run*:
+```bash
+solana config set -u mainnet-beta -k cold-wallet.json
+```
+
+Copy `nonce.txt` to the Persistent directory.
+
+```bash
+cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
+```
+
 Create the offline transaction:
 
 ```bash
@@ -444,7 +571,20 @@ stake-account.json
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` and submit:
+```bash
+echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
+echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_USB>/signer* ~
+```
+
+Submit the transaction:
 
 ```bash
 solana deactivate-stake \
@@ -475,6 +615,8 @@ Save the balance (numerical value only) to `balance.txt`:
 
 ```bash
 echo <balance> > balance.txt
+```
+```bash
 cp balance.txt /media/<USER>/<Data_USB>/
 ```
 
@@ -482,11 +624,45 @@ Advance the nonce:
 
 ```bash
 solana new-nonce nonce-account.json
+```
+```bash
 solana nonce nonce-account.json > nonce.txt
+```
+```bash
 cp nonce.txt /media/<USER>/<Data_USB>/
 ```
 
-On the **air-gapped computer**, set up the Solana CLI and copy `nonce.txt` and `balance.txt`to the Persistent directory.
+On the **air-gapped computer**, set up the Solana CLI:
+
+```bash
+cd Persistent/solana-release/
+```
+```bash
+export PATH=$PWD/bin:$PATH
+```
+```bash
+cd ..
+```
+
+*Test Run*:
+```bash
+solana config set -u devnet -k cold-wallet.json
+```
+
+*Live Run*:
+```bash
+solana config set -u mainnet-beta -k cold-wallet.json
+```
+
+Copy `nonce.txt` and `balance.txt`to the Persistent directory.
+
+```bash
+cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
+```
+```bash
+cp /media/amnesia/<Data_USB>/balance.txt ~/Persistent/
+```
+
 Create the offline transaction:
 
 ```bash
@@ -502,7 +678,20 @@ cold-wallet.json $(cat balance.txt)
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` and submit:
+```bash
+echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
+```
+```bash
+echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
+```
+
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+
+```bash
+cp /media/<USER>/<Data_USB>/signer* ~
+```
+
+Submit the transaction:
 
 ```bash
 solana withdraw-stake \
@@ -521,20 +710,36 @@ Check balances:
 
 ```bash
 solana balance $(cat cold-wallet-address.txt)
+```
+```bash
 solana stake-account $(cat stake-account-address.txt)
 ```
+The error indicates the stake account is deactivated and unfunded.
 
 ## Withdraw from Nonce Account
 
 The nonce account can remain active for future transactions or the rent amount can be recovered.
 
-Recover rent amount to the hot wallet (nonce-authority):
+
+On the **networked computer**, recover rent amount to the hot wallet (nonce-authority):
 
 ```bash
 solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
 ```
 
 The hot wallet will need enough balance to cover the transaction fee.
+
+Check account balances:
+
+```bash
+solana balance nonce-account.json
+```
+```bash
+solana balance hot-wallet.json
+```
+```bash
+solana balance $(cat cold-wallet-address.txt)
+```
 
 ## Software Wallets
 
@@ -559,4 +764,5 @@ Consider a small SOL donation to the author:
 An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 
 ![QR Code](https://raw.githubusercontent.com/grepeverything/Solana-Paper-Wallet-with-Staking/main/SOL_Donation_QR_Code.png)
+
 
