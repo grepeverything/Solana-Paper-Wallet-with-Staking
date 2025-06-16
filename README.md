@@ -521,7 +521,7 @@ solana stake-account $(cat stake-account-address.txt)
 
 The nonce account can remain active for future transactions or the rent amount can be recovered.
 
-Recover rent amount to the hot wallet (nonce-authority)
+Recover rent amount to the hot wallet (nonce-authority):
 
 ```bash
 solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
