@@ -256,6 +256,8 @@ Display nonce account details:
 solana nonce-account nonce-account.json
 ```
 
+The nonce-account.json file or the nonce account address will be required to recover the rent. Keep them safe.
+
 ## Create the Stake Account
 On the **air-gapped computer**, set up the Solana CLI:
 
