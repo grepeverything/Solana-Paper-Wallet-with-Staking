@@ -21,7 +21,7 @@ Practice on **devnet** (using air-dropped test SOL) before attempting on **mainn
 ## Download and Install the Solana CLI
 On the **networked computer**, download the latest stable release (v2.2.16 at the time of writing) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
 
-Execute commands from the home directory (`~/`) or prefered working directory.
+Execute commands from the home directory (`~/`) or preferred working directory.
 
 ```bash
 wget https://github.com/anza-xyz/agave/releases/download/v2.2.16/solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -200,7 +200,7 @@ On the **networked computer**, ensure the correct URL and keypair are set:
 solana config get
 ```
 
-Copy `cold-wallet-address.txt` from the Data USB to `~/`or prefered working directory:
+Copy `cold-wallet-address.txt` from the Data USB to `~/`or preferred working directory:
 
 ```bash
 cp /media/<USER>/<Data_USB>/cold-wallet-address.txt ~
@@ -318,7 +318,7 @@ echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
 echo <signing_pair_3> > /media/amnesia/<Data_USB>/signer3.txt
 ```
 
-On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/` or prefered working directory.
+On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/` or preferred working directory.
 
 Submit the transaction:
 
@@ -390,7 +390,7 @@ $(cat validator.txt)
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or prefered working directory and submit:
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory and submit:
 
 ```bash
 solana delegate-stake \
@@ -437,7 +437,7 @@ stake-account.json
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or prefered working directory and submit:
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory and submit:
 
 ```bash
 solana deactivate-stake \
@@ -495,7 +495,7 @@ cold-wallet.json $(cat balance.txt)
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or prefered working directory and submit:
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory and submit:
 
 ```bash
 solana withdraw-stake \
@@ -521,7 +521,8 @@ solana stake-account $(cat stake-account-address.txt)
 
 The nonce account can remain active for future transactions or the rent amount can be recovered.
 
-Recover rent amount to the hot wallet (nonce-authority):
+
+On the **networked computer**, recover rent amount to the hot wallet (nonce-authority):
 
 ```bash
 solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
