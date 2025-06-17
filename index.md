@@ -736,9 +736,6 @@ solana balance nonce-account.json
 ```bash
 solana balance hot-wallet.json
 ```
-```bash
-solana balance $(cat cold-wallet-address.txt)
-```
 
 ## Software Wallets
 
