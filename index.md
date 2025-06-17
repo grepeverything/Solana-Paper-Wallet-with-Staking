@@ -712,9 +712,8 @@ Check balances:
 solana balance $(cat cold-wallet-address.txt)
 ```
 ```bash
-solana stake-account $(cat stake-account-address.txt)
+solana balance $(cat stake-account-address.txt)
 ```
-The error indicates the stake account is deactivated and unfunded.
 
 ## Withdraw from Nonce Account
 
