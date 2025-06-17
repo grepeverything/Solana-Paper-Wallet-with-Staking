@@ -21,7 +21,7 @@ Practice on **devnet** (using air-dropped test SOL) before attempting on **mainn
 ## Download and Install the Solana CLI
 On the **networked computer**, download the latest stable release (v2.2.16 at the time of writing) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
 
-Execute commands from the home directory (`~/`) or preferred working directory.
+Execute commands from the home directory (`~/`) or preferred working directory:
 
 ```bash
 wget https://github.com/anza-xyz/agave/releases/download/v2.2.16/solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -42,11 +42,11 @@ export PATH=$PWD/bin:$PATH
 cd ..
 ```
 
-To persist across terminal sessions, add to `.bashrc`:
+To persist across terminal sessions, add PATH to `.bashrc`:
 
 ```bash
 # set PATH environment variable to include the Solana CLI tools
-export PATH=$PATH:~/solana-release/bin
+export PATH=$PATH:~/<WORKING_DIRECTORY>/solana-release/bin
 ```
 
 Verify installation:
@@ -85,12 +85,12 @@ Set up the Solana CLI for **devnet** (test run) or **mainnet-beta** (live run), 
 
 *Test Run*:
 ```bash
-solana config set --url devnet -k ~/hot-wallet.json
+solana config set --url devnet -k hot-wallet.json
 ```
 
 *Live Run*:
 ```bash
-solana config set --url mainnet-beta -k ~/hot-wallet.json
+solana config set --url mainnet-beta -k hot-wallet.json
 ```
 
 Fund the hot wallet:
