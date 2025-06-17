@@ -95,9 +95,9 @@ solana config set --url mainnet-beta -k ~/hot-wallet.json
 
 Fund the hot wallet:
 
-*Test Run* (airdrop 1.5 SOL):
+*Test Run* (airdrop 1.1 SOL):
 ```bash
-solana airdrop 1.5 hot-wallet.json
+solana airdrop 1.1 hot-wallet.json
 ```
 
 *Live Run*:
@@ -234,9 +234,10 @@ solana transfer \
 --fee-payer hot-wallet.json \
 $(cat cold-wallet-address.txt) 1.05
 ```
+**Note** In this case the `--from` and `--fee-payer` options are not needed as the `hot-wallet.json` is set as the keypair in the config. They are included here as a visual.
 
 *Live Run*:
-Update the `<AMOUNT>` to include staking amount + 0.05 SOL for fees.
+Update the `<AMOUNT>` to include staking amount + 0.05 SOL for future fees.
 
 Check the cold wallet balance:
 
@@ -340,9 +341,10 @@ solana create-stake-account \
 --nonce-authority hot-wallet.json \
 stake-account.json 1
 ```
+**Note** The amount sent to the stake account comes from the cold wallet as it is set as the keypair in the config.
 
 *Live Run*:
-Update the `<AMOUNT>` as needed.
+Update the `<AMOUNT>` as needed. Leave a small amount in the cold wallet for future fees (0.05).
 
 Save signing pairs to the Data USB (replace `<signing_pair_X>` with actual values):
 
