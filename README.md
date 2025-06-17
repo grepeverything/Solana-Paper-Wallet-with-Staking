@@ -721,7 +721,7 @@ solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
 
 The hot wallet will need enough balance to cover the transaction fee.
 
-Check account balances:
+Check balances:
 
 ```bash
 solana balance nonce-account.json
@@ -729,9 +729,7 @@ solana balance nonce-account.json
 ```bash
 solana balance hot-wallet.json
 ```
-```bash
-solana balance $(cat cold-wallet-address.txt)
-```
+
 
 ## Software Wallets
 
