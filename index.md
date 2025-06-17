@@ -28,7 +28,7 @@ Practice on **devnet** (using air-dropped test SOL) before attempting on **mainn
 ## Download and Install the Solana CLI
 On the **networked computer**, download the latest stable release (v2.2.16 at the time of writing) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
 
-Execute commands from the home directory (`~/`) or preferred working directory.
+Execute commands from the home directory (`~/`) or preferred working directory:
 
 ```bash
 wget https://github.com/anza-xyz/agave/releases/download/v2.2.16/solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -49,11 +49,11 @@ export PATH=$PWD/bin:$PATH
 cd ..
 ```
 
-To persist across terminal sessions, add to `.bashrc`:
+To persist across terminal sessions, add PATH to `.bashrc`:
 
 ```bash
 # set PATH environment variable to include the Solana CLI tools
-export PATH=$PATH:~/solana-release/bin
+export PATH=$PATH:~/<WORKING_DIRECTORY>/solana-release/bin
 ```
 
 Verify installation:
@@ -92,19 +92,19 @@ Set up the Solana CLI for **devnet** (test run) or **mainnet-beta** (live run), 
 
 *Test Run*:
 ```bash
-solana config set --url devnet -k ~/hot-wallet.json
+solana config set --url devnet -k hot-wallet.json
 ```
 
 *Live Run*:
 ```bash
-solana config set --url mainnet-beta -k ~/hot-wallet.json
+solana config set --url mainnet-beta -k hot-wallet.json
 ```
 
 Fund the hot wallet:
 
-*Test Run* (airdrop 1.5 SOL):
+*Test Run* (airdrop 1.1 SOL):
 ```bash
-solana airdrop 1.5 hot-wallet.json
+solana airdrop 1.1 hot-wallet.json
 ```
 
 *Live Run*:
@@ -241,9 +241,10 @@ solana transfer \
 --fee-payer hot-wallet.json \
 $(cat cold-wallet-address.txt) 1.05
 ```
+**Note** In this case the `--from` and `--fee-payer` options are not needed as the `hot-wallet.json` is set as the keypair in the config. They are included here as a visual.
 
 *Live Run*:
-Update the `<AMOUNT>` to include staking amount + 0.05 SOL for fees.
+Update the `<AMOUNT>` to include staking amount + 0.05 SOL for future fees.
 
 Check the cold wallet balance:
 
@@ -347,9 +348,10 @@ solana create-stake-account \
 --nonce-authority hot-wallet.json \
 stake-account.json 1
 ```
+**Note** The amount sent to the stake account comes from the cold wallet as it is set as the keypair in the config.
 
 *Live Run*:
-Update the `<AMOUNT>` as needed.
+Update the `<AMOUNT>` as needed. Leave a small amount in the cold wallet for future fees (0.05).
 
 Save signing pairs to the Data USB (replace `<signing_pair_X>` with actual values):
 
@@ -737,6 +739,7 @@ solana balance nonce-account.json
 solana balance hot-wallet.json
 ```
 
+
 ## Software Wallets
 
 A view-only wallet can be created using the [Backpack](https://backpack.app/) app.
@@ -760,5 +763,6 @@ Consider a small SOL donation to the author:
 An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 
 ![QR Code](https://raw.githubusercontent.com/grepeverything/Solana-Paper-Wallet-with-Staking/main/SOL_Donation_QR_Code.png)
+
 
 
