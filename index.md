@@ -9,7 +9,6 @@ keywords: Solana, paper wallet, cryptocurrency, staking, blockchain, tutorial, g
 
 This guide provides step-by-step instructions to create a Solana paper wallet and a stake account controlled by the paper wallet. All sensitive operations are performed on an air-gapped computer to ensure the seed phrases and private keys remain offline. Transactions are constructed using offline signing via the Solana CLI, and the paper wallet is designed for easy recovery with software wallets. This guide assumes a Linux environment.
 
-
 ## Introduction to the Solana CLI
 For more details, see the [Solana CLI documentation](https://docs.anza.xyz/cli/intro).
 
@@ -89,7 +88,7 @@ Clear the terminal:
 clear
 ```
 
-Set up the Solana CLI for **devnet** (test run) or **mainnet-beta** (live run), and assign hot-wallet.json as the default keypair.:
+Set up the Solana CLI for **devnet** (test run) or **mainnet-beta** (live run), and assign hot-wallet.json as the client keypair.:
 
 *Test Run*:
 ```bash
@@ -390,7 +389,6 @@ solana create-stake-account \
 --nonce-authority hot-wallet.json \
 --stake-authority $(cat cold-wallet-address.txt) \
 --withdraw-authority $(cat cold-wallet-address.txt) \
---fee-payer hot-wallet.json \
 --signer $(cat signer1.txt) \
 --signer $(cat signer2.txt) \
 --signer $(cat signer3.txt) \
@@ -508,7 +506,6 @@ solana delegate-stake \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
 --stake-authority $(cat cold-wallet-address.txt) \
---fee-payer hot-wallet.json \
 --signer $(cat signer1.txt) \
 --signer $(cat signer2.txt) \
 $(cat stake-account-address.txt) \
@@ -521,7 +518,9 @@ View the stake account (activation takes a few days):
 solana stake-account $(cat stake-account-address.txt)
 ```
 
-Check your wallet on [Solscan](https://solscan.io/?cluster=devnet) (devnet) or [Solscan](https://solscan.io/) (mainnet-beta) using the cold wallet public key.
+View the wallet on [Solscan](https://solscan.io/?cluster=devnet) (devnet) or [Solscan](https://solscan.io/) (mainnet-beta) using the cold wallet public key.
+
+**Note** If performing the *Test Run*, there is no need to wait for the stake to activate before continuing to the next steps.
 
 ## Deactivate Stake
 On the **networked computer**, advance the nonce:
@@ -599,7 +598,6 @@ solana deactivate-stake \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
 --stake-authority $(cat cold-wallet-address.txt) \
---fee-payer hot-wallet.json \
 --signer $(cat signer1.txt) \
 --signer $(cat signer2.txt) \
 $(cat stake-account-address.txt)
@@ -610,6 +608,8 @@ View the stake account (deactivation takes a few days):
 ```bash
 solana stake-account $(cat stake-account-address.txt)
 ```
+
+**Note** If performing the *Test Run*, there is no need to wait for the stake to deactivate before continuing to the next steps.
 
 ## Withdraw Stake
 On the **networked computer**, verify deactivation and note the balance:
@@ -706,7 +706,6 @@ solana withdraw-stake \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
 --withdraw-authority $(cat cold-wallet-address.txt) \
---fee-payer hot-wallet.json \
 --signer $(cat signer1.txt) \
 --signer $(cat signer2.txt) \
 $(cat stake-account-address.txt) \
@@ -723,9 +722,7 @@ solana balance $(cat stake-account-address.txt)
 ```
 
 ## Withdraw from Nonce Account
-
 The nonce account can remain active for future transactions or the rent amount can be recovered.
-
 
 On the **networked computer**, recover rent amount to the hot wallet (nonce-authority):
 
@@ -745,7 +742,6 @@ solana balance hot-wallet.json
 
 
 ## Software Wallets
-
 A view-only wallet can be created using the [Backpack](https://backpack.app/) app.
 
 If viewing a devnet wallet, switch the RPC Connection to use `https://api.devnet.solana.com` in settings.
@@ -758,15 +754,96 @@ A software wallet can also be used to recover the paper wallet from the seed phr
 
 
 ## Conclusion
-This guide covers creating a secure Solana paper wallet with staking using offline signing. 
+This guide covers creating a secure Solana paper wallet with staking using offline signing. There are many more uses for the Solana CLI outside the scope of this guide.
+The knowledge learned here should be a great base for further exploration.
 
-Test the knowledge learned by constructing a transaction to transfer the cold wallet balance to the hot wallet.
+Test the knowledge learned by constructing a transaction to transfer SOL from the cold wallet to the hot wallet. (Solution included in the Bonus Section).
 
 **Consider a small SOL donation to the author:**
 
 An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 
 ![QR Code](https://raw.githubusercontent.com/grepeverything/Solana-Paper-Wallet-with-Staking/main/SOL_Donation_QR_Code.png)
+
+
+## Bonus Section
+Some additional items that may be of interest.
+
+## Recover Keypair from Seed Phrase
+
+**Air-gapped Computer**
+```bash
+solana-keygen recover -o recovered-wallet.json 'prompt://?key=0/0'
+```
+
+
+## Transfer from Cold Wallet to Hot Wallet
+
+**Air-gapped Compuer**
+
+Assuming `cold-wallet.json` is set as the client keypair:
+
+```bash
+solana transfer \
+--sign-only \
+--blockhash $(cat nonce.txt) \
+--nonce $(cat nonce-account-address.txt) \
+--nonce-authority hot-wallet.json \
+--fee-payer hot-wallet.json \
+hot-wallet.json <AMOUNT>
+```
+
+**Networked Computer**
+
+Assuming `hot-wallet.json` is set as the client keypair:
+
+```bash
+solana transfer \
+--blockhash $(cat nonce.txt) \
+--nonce $(cat nonce-account-address.txt) \
+--nonce-authority hot-wallet.json \
+--from $(cat cold-wallet-address.txt)
+--signer $(cat signer1.txt) \
+--signer $(cat signer2.txt) \
+hot-wallet.json <AMOUNT>
+```
+
+
+## Merge Stake Accounts
+Learn about merging stake accounts: 
+[Merging Stake Accounts](https://solana.com/docs/references/staking/stake-accounts#merging-stake-accounts)
+
+**Air-gapped Computer**
+
+Assuming `stake-account.json` is set as the client keypair:
+
+```bash
+solana merge-stake \
+--sign-only \
+--blockhash $(cat nonce.txt) \
+--nonce $(cat nonce-account-address.txt) \
+--nonce-authority hot-wallet.json \
+--fee-payer hot-wallet.json \
+<STAKE_ACCOUNT_ADDRESS> <SOURCE_STAKE_ACCOUNT_ADDRESS>
+```
+
+**Networked Computer**
+
+Assuming `hot-wallet.json` is set as the client keypair:
+
+```bash
+solana merge-stake \
+--blockhash $(cat nonce.txt) \
+--nonce $(cat nonce-account-address.txt) \
+--nonce-authority hot-wallet.json \
+--stake-authority $(cat staking-account-address.txt) \
+--signer $(cat signer1.txt) \
+--signer $(cat signer2.txt) \
+<STAKE_ACCOUNT_ADDRESS> <SOURCE_STAKE_ACCOUNT_ADDRESS>
+```
+
+More to come?
+
 
 
 
