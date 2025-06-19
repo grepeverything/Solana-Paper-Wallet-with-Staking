@@ -776,6 +776,7 @@ solana-keygen recover -o recovered-wallet.json 'prompt://?key=0/0'
 ## Transfer from Cold Wallet to Hot Wallet
 
 **Air-gapped Compuer**
+
 Assuming `cold-wallet.json` is set as the client keypair:
 
 ```bash
@@ -789,6 +790,7 @@ hot-wallet.json <AMOUNT>
 ```
 
 **Networked Computer**
+
 Assuming `hot-wallet.json` is set as the client keypair:
 
 ```bash
@@ -808,6 +810,7 @@ Learn about merging stake accounts:
 [Merging Stake Accounts](https://solana.com/docs/references/staking/stake-accounts#merging-stake-accounts)
 
 **Air-gapped Computer**
+
 Assuming `stake-account.json` is set as the client keypair:
 
 ```bash
@@ -821,6 +824,7 @@ solana merge-stake \
 ```
 
 **Networked Computer**
+
 Assuming `hot-wallet.json` is set as the client keypair:
 
 ```bash
