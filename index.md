@@ -9,6 +9,9 @@ keywords: Solana, paper wallet, cryptocurrency, staking, blockchain, tutorial, g
 
 This guide provides step-by-step instructions to create a Solana paper wallet and a stake account controlled by the paper wallet. All sensitive operations are performed on an air-gapped computer to ensure the seed phrases and private keys remain offline. Transactions are constructed using offline signing via the Solana CLI, and the paper wallet is designed for easy recovery with software wallets. This guide assumes a Linux environment.
 
+## Website
+[Solana Paper Wallet with Staking](https://grepeverything.github.io/Solana-Paper-Wallet-with-Staking/)
+
 ## Introduction to the Solana CLI
 For more details, see the [Solana CLI documentation](https://docs.anza.xyz/cli/intro).
 
@@ -100,15 +103,18 @@ solana config set --url devnet -k hot-wallet.json
 solana config set --url mainnet-beta -k hot-wallet.json
 ```
 
+In this guide the hot wallet is going to serve as the nonce authority and the fee payer for the transactions. It only requires a small amount of SOL.
+
+
 Fund the hot wallet:
 
-*Test Run* (airdrop 1.1 SOL):
+*Test Run* (airdrop 0.005 SOL):
 ```bash
-solana airdrop 1.1 hot-wallet.json
+solana airdrop 0.005 hot-wallet.json
 ```
 
 *Live Run*:
-Send SOL (amount to stake + 0.05 SOL for fees) from an existing wallet or exchange to the hot wallet's public key. 
+Send SOL from an existing wallet to the hot wallet's public key. 
 
 Display the public key:
 
@@ -158,7 +164,7 @@ export PATH=$PWD/bin:$PATH
 cd ..
 ```
 
-Persistent dotfiles are not enabled, so the PATH will need to be added each time Tails is rebooted
+Persistent dotfiles are not enabled, so the PATH will need to be added each time Tails is rebooted.
 
 Verify:
 
@@ -172,7 +178,7 @@ Expected output:
 solana-cli 2.2.16 (src:851b7526; feat:3073396398, client:Agave)
 ```
 
-## Create the Cold Wallet
+## Create the Cold Wallet (Paper Wallet)
 Generate the cold wallet on the air-gapped computer with a 24-word seed phrase for extra security:
 
 ```bash
@@ -231,20 +237,16 @@ Copy `cold-wallet-address.txt` from the Data USB to `~/`or preferred working dir
 cp /media/<USER>/<Data_USB>/cold-wallet-address.txt ~
 ```
 
-Transfer SOL from the hot wallet to the cold wallet (leave some SOL in the hot wallet as it will be the fee payer for most of the transactions. 0.05 should be fine):
+Fund the cold wallet (amount to be staked plus 0.005 SOL for any future fees):
 
-*Test Run*:
+*Test Run* (airdrop 1.005 SOL):
+
 ```bash
-solana transfer \
---allow-unfunded-recipient \
---from hot-wallet.json \
---fee-payer hot-wallet.json \
-$(cat cold-wallet-address.txt) 1.05
+solana airdrop 1.005 $(cat cold-wallet-address.txt)
 ```
-**Note** In this case the `--from` and `--fee-payer` options are not needed as the `hot-wallet.json` is set as the keypair in the config. They are included here as a visual.
 
 *Live Run*:
-Update the `<AMOUNT>` to include staking amount + 0.05 SOL for future fees.
+Send the SOL from an existing wallet or an exchange to the cold wallet address.
 
 Check the cold wallet balance:
 
@@ -261,13 +263,16 @@ On the **networked computer**, generate the nonce account keypair:
 solana-keygen new --no-bip39-passphrase -s -o nonce-account.json
 ```
 
-Fund the nonce account (0.0015 SOL for rent):
+The hot wallet will fund the nonce account and be delegated as the nonce authority.
+
+Create and fund the nonce account (0.0015 SOL for rent):
 
 ```bash
 solana create-nonce-account nonce-account.json 0.0015
 ```
 
-Save the public key and nonce value:
+
+Save the public key and copy to the Data USB:
 
 ```bash
 solana address -k nonce-account.json > nonce-account-address.txt
@@ -275,6 +280,8 @@ solana address -k nonce-account.json > nonce-account-address.txt
 ```bash
 cp nonce-account-address.txt /media/<USER>/<Data_USB>/
 ```
+Save the nonce and copy to the Data USB:
+
 ```bash
 solana nonce nonce-account.json > nonce.txt
 ```
@@ -351,7 +358,7 @@ stake-account.json 1
 **Note** The amount sent to the stake account comes from the cold wallet as it is set as the keypair in the config.
 
 *Live Run*:
-Update the `<AMOUNT>` as needed. Leave a small amount in the cold wallet for future fees (0.05).
+Update the `<AMOUNT>` as needed. Leave a small amount in the cold wallet for future fees (0.005).
 
 Save signing pairs to the Data USB (replace `<signing_pair_X>` with actual values):
 
@@ -365,7 +372,7 @@ echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
 echo <signing_pair_3> > /media/amnesia/<Data_USB>/signer3.txt
 ```
 
-On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/` or preferred working directory.
+On the **networked computer**, copy `stake-account-address.txt`, `signer1.txt`, `signer2.txt`, and `signer3.txt` to `~/` or preferred working directory:
 
 ```bash
 cp /media/<USER>/<Data_USB>/stake-account-address.txt ~
@@ -455,7 +462,7 @@ solana config set -u devnet -k cold-wallet.json
 solana config set -u mainnet-beta -k cold-wallet.json
 ```
 
-Copy `nonce.txt` and `validator.txt` to the Persistent directory. Delete old `signer*.txt` files from the Data USB.
+Copy `nonce.txt` and `validator.txt` to the Persistent directory. Delete old `signer*.txt` files from the Data USB:
 
 ```bash
 cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
@@ -480,7 +487,7 @@ stake-account.json \
 $(cat validator.txt)
 ```
 
-Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
+Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB:
 
 ```bash
 echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
@@ -489,7 +496,7 @@ echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
 echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
 ```
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory:
 
 ```bash
 cp /media/<USER>/<Data_USB>/signer* ~
@@ -553,7 +560,7 @@ solana config set -u devnet -k cold-wallet.json
 solana config set -u mainnet-beta -k cold-wallet.json
 ```
 
-Copy `nonce.txt` to the Persistent directory.
+Copy `nonce.txt` to the Persistent directory:
 
 ```bash
 cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
@@ -571,7 +578,7 @@ solana deactivate-stake \
 stake-account.json
 ```
 
-Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
+Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB:
 
 ```bash
 echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
@@ -580,7 +587,7 @@ echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
 echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
 ```
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory:
 
 ```bash
 cp /media/<USER>/<Data_USB>/signer* ~
@@ -656,7 +663,7 @@ solana config set -u devnet -k cold-wallet.json
 solana config set -u mainnet-beta -k cold-wallet.json
 ```
 
-Copy `nonce.txt` and `balance.txt`to the Persistent directory.
+Copy `nonce.txt` and `balance.txt`to the Persistent directory:
 
 ```bash
 cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
@@ -678,7 +685,7 @@ stake-account.json \
 cold-wallet.json $(cat balance.txt)
 ```
 
-Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB.
+Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB:
 
 ```bash
 echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
@@ -687,7 +694,7 @@ echo <signing_pair_1> > /media/amnesia/<Data_USB>/signer1.txt
 echo <signing_pair_2> > /media/amnesia/<Data_USB>/signer2.txt
 ```
 
-On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory.
+On the **networked computer**, copy `signer1.txt` and `signer2.txt` to `~/` or preferred working directory:
 
 ```bash
 cp /media/<USER>/<Data_USB>/signer* ~
@@ -728,7 +735,6 @@ On the **networked computer**, recover rent amount to the hot wallet (nonce-auth
 solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
 ```
 
-The hot wallet will need enough balance to cover the transaction fee.
 
 Check balances:
 
@@ -756,13 +762,14 @@ A software wallet can also be used to recover the paper wallet from the seed phr
 ## Conclusion
 This guide covers creating a secure Solana paper wallet with staking using offline signing. 
 
-Test the knowledge learned by constructing a transaction to transfer the cold wallet balance back to the hot wallet.
+Test the knowledge learned by constructing a transaction to transfer the cold wallet balance to the hot wallet.
 
-Consider a small SOL donation to the author:
+**Consider a small SOL donation to the author:**
 
 An3xM6xCLmBEn3NXjYoggvWQToL9Lmx5mH2USchUpyNz
 
 ![QR Code](https://raw.githubusercontent.com/grepeverything/Solana-Paper-Wallet-with-Staking/main/SOL_Donation_QR_Code.png)
+
 
 
 
