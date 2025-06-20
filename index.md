@@ -721,25 +721,6 @@ solana balance $(cat cold-wallet-address.txt)
 solana balance $(cat stake-account-address.txt)
 ```
 
-## Withdraw from Nonce Account
-The nonce account can remain active for future transactions or the rent amount can be recovered.
-
-On the **networked computer**, recover rent amount to the hot wallet (nonce-authority):
-
-```bash
-solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
-```
-
-
-Check balances:
-
-```bash
-solana balance nonce-account.json
-```
-```bash
-solana balance hot-wallet.json
-```
-
 
 ## Software Wallets
 A view-only wallet can be created using the [Backpack](https://backpack.app/) app.
@@ -840,6 +821,26 @@ solana merge-stake \
 --signer $(cat signer1.txt) \
 --signer $(cat signer2.txt) \
 <STAKE_ACCOUNT_ADDRESS> <SOURCE_STAKE_ACCOUNT_ADDRESS>
+```
+
+
+## Withdraw from Nonce Account
+The nonce account can remain active for future transactions or the rent amount can be recovered.
+
+On the **networked computer**, recover rent amount to the hot wallet (nonce-authority):
+
+```bash
+solana withdraw-from-nonce-account nonce-account.json hot-wallet.json 0.0015
+```
+
+
+Check balances:
+
+```bash
+solana balance nonce-account.json
+```
+```bash
+solana balance hot-wallet.json
 ```
 
 More to come?
