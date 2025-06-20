@@ -783,7 +783,7 @@ solana transfer \
 --blockhash $(cat nonce.txt) \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
---from $(cat cold-wallet-address.txt)
+--from $(cat cold-wallet-address.txt) \
 --signer $(cat signer1.txt) \
 --signer $(cat signer2.txt) \
 hot-wallet.json <AMOUNT>
