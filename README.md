@@ -61,7 +61,7 @@ solana --version
 Expected output:
 
 ```bash
-solana-cli 2.2.17 (src:e998175d; feat:3073396398, client:Agave)
+solana-cli 2.2.18 (src:1bcdaab0; feat:3073396398, client:Agave)
 ```
 
 ## Create the Hot Wallet
@@ -168,7 +168,7 @@ solana --version
 Expected output:
 
 ```
-solana-cli 2.2.17 (src:e998175d; feat:3073396398, client:Agave)
+solana-cli 2.2.18 (src:1bcdaab0; feat:3073396398, client:Agave)
 ```
 
 ## Create the Cold Wallet (Paper Wallet)
