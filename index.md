@@ -722,16 +722,18 @@ solana balance $(cat stake-account-address.txt)
 ```
 
 
-## Software Wallets
-A view-only wallet can be created using the [Backpack](https://backpack.app/) app.
+## Software Wallets Apps
+A view-only wallet can be created using only the public key. Several wallet apps support view-only mode:
 
-If viewing a devnet wallet, switch the RPC Connection to use `https://api.devnet.solana.com` in settings.
+[Backpack](https://backpack.app/)
 
-If viewing a mainnet wallet, leave the RPC Connection as the default.
+[Phantom](https://www.phantom.com/)
 
-A software wallet can also be used to recover the paper wallet from the seed phrase.
+[Trust](https://trustwallet.com/)
 
-**Warning**: Recovering in a software wallet makes it a hot wallet.
+A software wallet app can also be used to recover the paper wallet from the seed phrase.
+
+**Warning**: Recovering in a software wallet app makes it a hot wallet.
 
 
 ## Conclusion
