@@ -798,7 +798,7 @@ Learn about merging stake accounts:
 
 **Air-gapped Computer**
 
-Assuming `stake-account.json` is set as the client keypair:
+Assuming `hot-wallet.json` is set as the client keypair:
 
 ```bash
 solana merge-stake \
@@ -806,7 +806,7 @@ solana merge-stake \
 --blockhash $(cat nonce.txt) \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
---fee-payer hot-wallet.json \
+--stake-authority cold-wallet.json \
 <STAKE_ACCOUNT_ADDRESS> <SOURCE_STAKE_ACCOUNT_ADDRESS>
 ```
 
@@ -819,7 +819,7 @@ solana merge-stake \
 --blockhash $(cat nonce.txt) \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
---stake-authority $(cat staking-account-address.txt) \
+--stake-authority $(cat cold-wallet-address.txt) \
 --signer $(cat signer1.txt) \
 --signer $(cat signer2.txt) \
 <STAKE_ACCOUNT_ADDRESS> <SOURCE_STAKE_ACCOUNT_ADDRESS>
