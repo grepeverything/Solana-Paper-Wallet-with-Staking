@@ -661,7 +661,7 @@ solana config set -u devnet -k cold-wallet.json
 solana config set -u mainnet-beta -k cold-wallet.json
 ```
 
-Copy `nonce.txt` and `balance.txt`to the Persistent directory:
+Copy `nonce.txt` and `balance.txt` to the Persistent directory:
 
 ```bash
 cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
