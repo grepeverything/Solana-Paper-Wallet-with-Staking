@@ -329,7 +329,7 @@ cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
 Generate the stake account keypair and copy the address to the Data USB:
 
 ```bash
-solana-keygen new --no-passphrase --derivation-path -s -o stake-account.json
+solana-keygen new --no-bip39-passphrase --derivation-path -s -o stake-account.json
 ```
 ```bash
 solana address -k stake-account.json > stake-account-address.txt
