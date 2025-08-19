@@ -348,11 +348,14 @@ solana create-stake-account \
 --sign-only \
 --blockhash $(cat nonce.txt) \
 --fee-payer hot-wallet.json \
+--from cold-wallet.json \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
+--stake-authority cold-wallet.json \
+--withdraw-authority cold-wallet.json \
 stake-account.json 1
 ```
-**Note** The amount sent to the stake account comes from the cold wallet as it is set as the keypair in the config.
+**Note** The following options are included as a visual reference, --from, --stake-authority, --withdraw-authority. They use the client keypair by default and in this case it is already set to cold-wallet.json.
 
 *Live Run*:
 Update the `<AMOUNT>` as needed. Leave a small amount in the cold wallet for future fees (0.005).
@@ -479,9 +482,11 @@ solana delegate-stake \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
 --fee-payer hot-wallet.json \
+--stake-authority cold-wallet.json \
 stake-account.json \
 $(cat validator.txt)
 ```
+**Note** The following option is included as a visual reference, --stake-authority. It uses the client keypair by default and in this case it is already set to cold-wallet.json.
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB:
 
@@ -572,8 +577,10 @@ solana deactivate-stake \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
 --fee-payer hot-wallet.json \
+--stake-authority cold-wallet.json \
 stake-account.json
 ```
+**Note** The following option is included as a visual reference, --stake-authority. It uses the client keypair by default and in this case it is already set to cold-wallet.json.
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB:
 
@@ -679,9 +686,11 @@ solana withdraw-stake \
 --nonce $(cat nonce-account-address.txt) \
 --nonce-authority hot-wallet.json \
 --fee-payer hot-wallet.json \
+--withdraw-authority cold-wallet.json \
 stake-account.json \
 cold-wallet.json $(cat balance.txt)
 ```
+**Note** The following option is included as a visual reference, --withdraw-authority. It uses the client keypair by default and in this case it is already set to cold-wallet.json.
 
 Save signing pairs to `signer1.txt` and `signer2.txt` on the Data USB:
 
