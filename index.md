@@ -81,6 +81,7 @@ solana-keygen new \
 ```
 
 **Write down the 12-word seed phrase** and store it securely. The `.json` file contains the private key—guard it carefully.
+**Note** Using the `--derivation-path` option without specifying a path defaults to the standard BIP44 derivation path m/44'/501'/0. This ensures easy recovery in popular software wallets.
 
 Clear the terminal:
 
@@ -292,7 +293,7 @@ Display nonce account details:
 solana nonce-account nonce-account.json
 ```
 
-The nonce-account.json file or the nonce account address will be required to recover the rent. Store them somewhere safe.
+The nonce account address will be required to recover the rent. Store it somewhere safe.
 
 ## Create the Stake Account
 On the **air-gapped computer**, set up the Solana CLI:
@@ -329,7 +330,7 @@ cp /media/amnesia/<Data_USB>/nonce.txt ~/Persistent/
 Generate the stake account keypair and copy the address to the Data USB:
 
 ```bash
-solana-keygen new --no-bip39-passphrase --derivation-path -s -o stake-account.json
+solana-keygen new --no-bip39-passphrase -s -o stake-account.json
 ```
 ```bash
 solana address -k stake-account.json > stake-account-address.txt
@@ -338,7 +339,7 @@ solana address -k stake-account.json > stake-account-address.txt
 cp stake-account-address.txt /media/amnesia/<Data_USB>/
 ```
 
-The stake-account.json file or the stake account address will be required to deactivate and withdraw the stake. Store them somewhere safe.
+The stake account address will be required to deactivate and withdraw the stake. Store it somewhere safe.
 
 Create and fund the stake account (offline signing):
 
