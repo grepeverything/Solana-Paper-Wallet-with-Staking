@@ -81,6 +81,7 @@ solana-keygen new \
 ```
 
 **Write down the 12-word seed phrase** and store it securely. The `.json` file contains the private key—guard it carefully.
+
 **Note** Using the `--derivation-path` option without specifying a path defaults to the standard BIP44 derivation path m/44'/501'/0. This ensures easy recovery in popular software wallets.
 
 Clear the terminal:
