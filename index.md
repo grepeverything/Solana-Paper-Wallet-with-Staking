@@ -526,7 +526,7 @@ $(cat stake-account-address.txt) \
 $(cat validator.txt)
 ```
 
-View the stake account (activation takes a few days):
+View the stake account (activation can take up to 2 days):
 
 ```bash
 solana stake-account $(cat stake-account-address.txt)
@@ -619,7 +619,7 @@ solana deactivate-stake \
 $(cat stake-account-address.txt)
 ```
 
-View the stake account (deactivation takes a few days):
+View the stake account (deactivation can take up to 2 days):
 
 ```bash
 solana stake-account $(cat stake-account-address.txt)
