@@ -33,6 +33,7 @@ Execute commands from the home directory (`~/`) or preferred working directory:
 ```bash
 wget https://github.com/anza-xyz/agave/releases/download/v2.3.7/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 ```
+**Note** Update the version number if a newer stable release is available.
 
 Unpack the Solana CLI and add it to the PATH:
 
