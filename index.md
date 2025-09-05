@@ -262,6 +262,7 @@ On the **networked computer**, generate the nonce account keypair:
 ```bash
 solana-keygen new --no-bip39-passphrase -s -o nonce-account.json
 ```
+**Note** The `-s` or `--silent` option omits the printing of the seed phrase on the screen. The seed phrase is not required for the nonce account or the stake account.
 
 The hot wallet will fund the nonce account and be delegated as the nonce authority.
 
