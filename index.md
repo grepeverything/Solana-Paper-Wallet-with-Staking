@@ -342,6 +342,7 @@ cp stake-account-address.txt /media/amnesia/<Data_USB>/
 ```
 
 The stake account address will be required to deactivate and withdraw the stake. Store it somewhere safe.
+(The stake account address can also be recovered using the following command: ```bash solana stakes --withdraw-authority <PUBKEY> ```)
 
 Create and fund the stake account (offline signing):
 
