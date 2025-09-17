@@ -26,12 +26,12 @@ For more details, see the [Solana CLI documentation](https://docs.anza.xyz/cli/i
 Practice on **devnet** (using air-dropped test SOL) before attempting on **mainnet-beta** with real SOL.
 
 ## Download and Install the Solana CLI
-On the **networked computer**, download the latest stable release (v2.3.8 as of latest update of this guide) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
+On the **networked computer**, download the latest stable release (v2.3.9 as of latest update of this guide) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
 
 Execute commands from the home directory (`~/`) or preferred working directory:
 
 ```bash
-wget https://github.com/anza-xyz/agave/releases/download/v2.3.8/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+wget https://github.com/anza-xyz/agave/releases/download/v2.3.9/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 ```
 **Note** Update the version number if a newer stable release is available.
 
@@ -72,7 +72,7 @@ solana --version
 Expected output:
 
 ```bash
-solana-cli 2.3.8 (src:473089c1; feat:2255652435, client:Agave)
+solana-cli 2.3.9 (src:47647df7; feat:2142755730, client:Agave)
 ```
 
 ## Create the Hot Wallet
@@ -181,7 +181,7 @@ solana --version
 Expected output:
 
 ```bash
-solana-cli 2.3.8 (src:473089c1; feat:2255652435, client:Agave)
+solana-cli 2.3.9 (src:47647df7; feat:2142755730, client:Agave)
 ```
 
 ## Create the Cold Wallet (Paper Wallet)
