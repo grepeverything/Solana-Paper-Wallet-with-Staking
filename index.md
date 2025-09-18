@@ -786,7 +786,7 @@ solana-keygen recover -o recovered-wallet.json 'prompt://?key=0/0'
 
 ## Transfer from Cold Wallet to Hot Wallet
 
-**Air-gapped Compuer**
+**Air-gapped Computer**
 
 Assuming `cold-wallet.json` is set as the client keypair:
 
