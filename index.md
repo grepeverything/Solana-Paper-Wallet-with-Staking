@@ -7,7 +7,7 @@ keywords: Solana, paper wallet, cryptocurrency, staking, blockchain, tutorial, g
 ---
 # Solana Paper Wallet with Staking
 
-_Updated Sept 28 2025_
+_Updated Sept 29 2025_
 
 This guide provides step-by-step instructions to create a Solana paper wallet and a stake account controlled by the paper wallet. All sensitive operations are performed on an air-gapped computer to ensure the seed phrases and private keys remain offline. Transactions are constructed using offline signing via the Solana CLI, and the paper wallet is designed for easy recovery with software wallet apps. This guide assumes a Linux environment.
 
@@ -28,12 +28,12 @@ For more details, see the [Solana CLI documentation](https://docs.anza.xyz/cli/i
 Practice on **devnet** (using air-dropped test SOL) before attempting on **mainnet-beta** with real SOL.
 
 ## Download and Install the Solana CLI
-On the **networked computer**, download the latest stable release (v2.3.9 as of latest update of this guide) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
+On the **networked computer**, download the latest stable release (v2.3.11 as of latest update of this guide) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
 
 Execute commands from the home directory (`~/`) or preferred working directory:
 
 ```bash
-wget https://github.com/anza-xyz/agave/releases/download/v2.3.9/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+wget https://github.com/anza-xyz/agave/releases/download/v2.3.11/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 ```
 **Note** Update the version number if a newer stable release is available.
 
@@ -74,7 +74,7 @@ solana --version
 Expected output:
 
 ```bash
-solana-cli 2.3.9 (src:47647df7; feat:2142755730, client:Agave)
+solana-cli 2.3.11 (src:342b9503; feat:2142755730, client:Agave)
 ```
 
 ## Create the Hot Wallet
@@ -183,7 +183,7 @@ solana --version
 Expected output:
 
 ```bash
-solana-cli 2.3.9 (src:47647df7; feat:2142755730, client:Agave)
+solana-cli 2.3.11 (src:342b9503; feat:2142755730, client:Agave)
 ```
 
 ## Create the Cold Wallet (Paper Wallet)
