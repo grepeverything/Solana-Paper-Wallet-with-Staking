@@ -28,7 +28,7 @@ For more details, see the [Solana CLI documentation](https://docs.anza.xyz/cli/i
 Practice on **devnet** (using air-dropped test SOL) before attempting on **mainnet-beta** with real SOL.
 
 ## Download and Install the Solana CLI
-On the **networked computer**, download the latest stable release (v2.3.13 as of latest update of this guide) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
+On the **networked computer**, download the latest stable release (v3.0.13 as of latest update of this guide) from [GitHub](https://github.com/anza-xyz/agave/releases/latest). Look for the Linux prebuilt binary: `solana-release-x86_64-unknown-linux-gnu.tar.bz2`.
 
 Execute commands from the home directory (`~/`) or preferred working directory:
 
