@@ -7,7 +7,7 @@ keywords: Solana, paper wallet, cryptocurrency, staking, blockchain, tutorial, g
 ---
 # Solana Paper Wallet with Staking
 
-_Updated January 10 2026_
+_Updated February 20 2026_
 
 This guide provides step-by-step instructions to create a Solana paper wallet and a stake account controlled by the paper wallet. All sensitive operations are performed on an air-gapped computer to ensure the seed phrases and private keys remain offline. Transactions are constructed using offline signing via the Solana CLI, and the paper wallet is designed for easy recovery with software wallet apps. This guide assumes a Linux environment.
 
@@ -33,7 +33,7 @@ On the **networked computer**, download the latest stable release (v3.0.14 as of
 Execute commands from the home directory (`~/`) or preferred working directory:
 
 ```bash
-wget https://github.com/anza-xyz/agave/releases/download/v3.0.14/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+wget https://github.com/anza-xyz/agave/releases/download/v3.1.8/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 ```
 **Note** Update the version number if a newer stable release is available.
 
@@ -74,7 +74,7 @@ solana --version
 Expected output:
 
 ```bash
-solana-cli 3.0.14 (src:f516a892; feat:3604001754, client:Agave)
+solana-cli 3.1.8 (src:2717084a; feat:1620780344, client:Agave)
 ```
 
 ## Create the Hot Wallet
@@ -183,7 +183,7 @@ solana --version
 Expected output:
 
 ```bash
-solana-cli 3.0.14 (src:f516a892; feat:3604001754, client:Agave)
+solana-cli 3.1.8 (src:2717084a; feat:1620780344, client:Agave)
 ```
 
 ## Create the Cold Wallet (Paper Wallet)
